@@ -6,7 +6,8 @@
   "scripts": {
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "rm -rf dist && mkdir -p dist && cp site/index.html src/calculator.js dist/"
   },
   "keywords": [],
   "author": "",

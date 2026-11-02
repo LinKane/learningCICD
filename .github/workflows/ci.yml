@@ -42,3 +42,34 @@ jobs:
                 name: coverage-report-${{ matrix.node-version }}
                 path: coverage/
                 retention-days: 7
+
+    deploy:
+        needs: [lint, test]
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+
+        permissions:
+            contents: read
+            id-token: write
+            packages: write
+        
+        environment:
+            name: "github-pages"
+            url: ${{ steps.deployment.outputs.page_url }}
+
+        steps:
+            - uses: actions/checkout@v5
+            - uses: actions/setup-node@v5
+              with:
+                node-version: 22
+
+            - run: npm run build
+
+            - uses: actions/configure-pages@v5
+            - uses: actions/upload-pages-artifact@v3
+              with:
+                path: ./dist
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>CI/CD Calculator</title>
+</head>
+<body>
+  <h1>CI/CD 計算機</h1>
+  <input id="a" type="number" value="1"> +
+  <input id="b" type="number" value="2">
+  <button id="btn">=</button>
+  <span id="result"></span>
+
+  <script type="module">
+    import { add } from './calculator.js'
+
+    document.getElementById('btn').addEventListener('click', () => {
+      const a = Number(document.getElementById('a').value)
+      const b = Number(document.getElementById('b').value)
+      document.getElementById('result').textContent = add(a, b)
+    })
+  </script>
+</body>
+</html>
