@@ -1,5 +1,5 @@
 import { describe, it, expect  } from 'vitest'
-import { add } from './calculator'
+import { add, subtract } from './calculator'
 
 describe('add', () => {
     it('1 + 2 應該等於3', () => {
@@ -10,5 +10,17 @@ describe('add', () => {
 describe('add', () => {
     it('1 - 2 應該等於-1', () => {
         expect(add(1,-2)).toBe(-1)
+    })
+})
+
+describe('subtract', () => {
+    it('1 - 2 應該等於-1', () => {
+        expect(subtract(1,2)).toBe(-1)
+    })
+})
+
+describe('subtract', () => {
+    it('5 - 2 應該等於 3', () => {
+        expect(subtract(5, 2)).toBe(3)
     })
 })
