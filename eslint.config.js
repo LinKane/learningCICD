@@ -9,6 +9,7 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',        // 我們用 import/export
       globals: globals.node,       // Node 環境的全域變數
+      ignorePatterns: ['dist/**', 'node_modules/**', 'coverage/**'], // 忽略的檔案
     },
   },
 ]
