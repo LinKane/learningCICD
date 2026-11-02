@@ -4,7 +4,7 @@ import globals from 'globals'
 export default [
   js.configs.recommended,          // 套用官方推薦規則
   {
-    ignores: ['dist/**', 'node_modules/**'],  // 忽略的檔案
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**'],  // 忽略的檔案
   },
   {
     files: ['**/*.js'],
