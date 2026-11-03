@@ -1,5 +1,5 @@
 import { describe, it, expect  } from 'vitest'
-import { add, subtract } from './calculator'
+import { add, subtract, multiply } from './calculator'
 
 describe('add', () => {
     it('1 + 2 應該等於3', () => {
