@@ -24,3 +24,12 @@ describe('subtract', () => {
         expect(subtract(5, 2)).toBe(3)
     })
 })
+
+describe('multiply', () => {
+    it('5 * 2 應該等於 10', () => {
+        expect(multiply(5, 2)).toBe(10)
+    }),
+    it('5 * 0 應該等於 0', () => {
+        expect(multiply(5, 0)).toBe(0)
+    })
+})
