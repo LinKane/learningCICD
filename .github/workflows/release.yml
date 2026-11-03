@@ -33,3 +33,35 @@ jobs:
                     calculator-${{ github.ref_name }}.zip \
                     --title "Release ${{ github.ref_name }}" \
                     --generate-notes
+
+    deploy-production:
+        needs: release
+        runs-on: ubuntu-latest
+        
+        permissions:
+            contents: read
+            id-token: write
+            pages: write
+
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+
+        steps:
+            - uses: actions/checkout@v5
+            - uses: actions/setup-node@v5
+              with:
+                node-version: 22
+            
+            - run: npm run build
+            - name: Add version info
+              run: echo "${{ github.ref_name }} (${{ github.sha }})" > dist/version.txt
+
+            - uses: actions/configure-pages@v5
+            - uses: actions/upload-pages-artifact@v3
+              with:
+                path: ./dist
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
